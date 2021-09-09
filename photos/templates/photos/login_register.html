@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>login/register</title>
+       
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    </head>
+    <body style = "background: rgb(95,94,108);
+background: radial-gradient(circle, rgba(95,94,108,1) 0%, rgba(1,1,1,0.8354692218684349) 100%);">
+        <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+        <div class = "container mt-5">
+            <div class = "row justify-content-center">
+                <div class = "col-md-6 text-white bg-secondary pt-2 pb-2 border border-white rounded">
+                    {% if page == 'login' %}
+                    <form method = "POST" action = "">
+                        <h1 class="card-header m-2 bg-primary rounded"> Login here</h1>
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">username</label>
+                            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter username" name= "username">
+                            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                        </div>
+                            <div class="form-group">
+                            <label for="exampleInputPassword1">Password</label>
+                            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" name = "password">
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-block">Submit</button>
+                        <p class="text p-2"> Don't have an account ?</p>
+                         <a href="{% url 'register' %}" class="btn btn-outline  btn-dark pt-1 pb-2">Register</a>
+                    </form>
+                    {% else %}
+                    <form method="post" >
+                        <h1 class="card-header m-2 bg-primary rounded"> Register here</h1>
+                        {% csrf_token %}
+                        {{form}}
+                        
+                        <button type="submit" class="btn btn-primary btn-block">Submit</button>
+                        <p class="text p-2"> Already have an account ?</p>
+                         <a href="{% url 'login' %}" class="btn btn-outline  btn-dark pt-1">login</a>
+
+
+                    </form>
+
+                    {% endif %}
+                </div>
+            </div>    
+        </div>
+        
+    </body>
+</html>
